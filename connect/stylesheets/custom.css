@@ -32,7 +32,7 @@ h2 {
   line-height: 1.4rem;
 }
 
-.main-actions button {
+.main-actions button, select {
   width: 85%;
   margin-bottom: 30px;
   padding: 35px 10px;
@@ -41,7 +41,6 @@ h2 {
 }
 
 .main-actions select {
-  width: 85%;
   height: 80px;
 }
 

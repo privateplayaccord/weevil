@@ -1,0 +1,78 @@
+body {
+  color: #444;
+  background: #fff;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+header {
+  margin-top: 26px;
+}
+
+main { 
+  flex: 1 0 auto; 
+}
+
+h1 {
+  font-size: 2.8em;
+  line-height: 1.2em;
+}
+
+h2 {
+  font-size: 1.8em;
+}
+
+.logo {
+  width: 50%;
+}
+
+.main-actions {
+  font-size: 1.4rem;
+  line-height: 1.4rem;
+}
+
+.main-actions button {
+  width: 85%;
+  margin-bottom: 30px;
+  padding: 35px 10px;
+  height: auto;
+  font-size: 3em;
+}
+
+.main-actions select {
+  width: 85%;
+  height: 80px;
+}
+
+.main-actions i {
+  float: left;
+  font-size: 1.8em;
+}
+
+#info-wrapper {
+  background: #f2f2f2;
+  padding: 10px;
+  width: 85%;
+  display: block;
+  font-family: courier;
+  margin: auto;
+}
+
+
+footer.page-footer {
+  background: #f2f2f2;
+  padding: 20px;
+  font-size: .8em;
+  text-align: center;
+}
+
+@media screen and (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+  .logo {
+    width: 40%;
+  }
+
+}

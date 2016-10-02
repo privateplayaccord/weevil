@@ -145,8 +145,11 @@
         
         document.querySelector('#btn_read_data').addEventListener('click', function() {
           
+
           weVibe.connect()
-          .then(_ => {weVibe.writeCommand(new Uint8Array([15, 255, 0, 100, 0, 0, 0, 0]))})
+          .then(_ => {return weVibe.writeCommand(new Uint8Array([15, 255, 0, 100, 0, 0, 0, 0]))})
+          .then(_ => {return weVibe.readInfo()})
+          .then(result => {displayInfo(result)})
           //.then(_ => weVibe.disconnect())
           .catch(error => { console.log(error) });
 

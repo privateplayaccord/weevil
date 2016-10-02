@@ -187,11 +187,11 @@
 	 if (pattern == "none")
 	   command = new Uint8Array([15, 0, null, 0, null, null, null, null]);
 	 else if (pattern == "chachacha")
-	   command = new Uint8Array([15, 9, null, 0, null, null, null, null]); 
+	   command = new Uint8Array([15, 9, null, 0, null, null, null, null]);
 	 else if (pattern == "vibrate")
-	   command = new Uint8Array([15, 1, null, 0, null, null, null, null]); 
+	   command = new Uint8Array([15, 1, null, 0, null, null, null, null]);
 	 else if (pattern == "other")
-	   command = new Uint8Array([15, 2, null, 0, null, null, null, null]); 
+	   command = new Uint8Array([15, 2, null, 0, null, null, null, null]);
 	 weVibe.connect()
                .then(_ => {return weVibe.writeCommand(command);})
                //.then(_ => weVibe.disconnect())

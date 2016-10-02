@@ -67,13 +67,13 @@
         //  * <https://googlechrome.github.io/samples/web-bluetooth/reset-energy.html>
 
         class WeVibe {
-        
+
           constructor() {
             this.device = null;
             this.onDisconnected = this.onDisconnected.bind(this);
             console.log(":D");
           }
-        
+
           request() {
             let options = {
                           "filters": [{
@@ -88,28 +88,28 @@
               return device;
             });
           }
-        
+
           connect() {
             if (!this.device) {
               return Promise.reject('Device is not connected.');
             } else {
               return this.device.gatt.connect();
-              
+
             }
           }
-          
+
           readInfo() {
             return this.device.gatt.getPrimaryService("f000bb03-0451-4000-b000-000000000000")
             .then(service => service.getCharacteristic("f000b000-0451-4000-b000-000000000000"))
             .then(characteristic => characteristic.readValue());
           }
-          
+
           writeCommand(data) {
             return this.device.gatt.getPrimaryService("f000bb03-0451-4000-b000-000000000000")
             .then(service => service.getCharacteristic("f000c000-0451-4000-b000-000000000000"))
             .then(characteristic => characteristic.writeValue(data));
           }
-          
+
           disconnect() {
             if (!this.device) {
               return Promise.reject('Device is not connected.');
@@ -117,7 +117,7 @@
               return this.device.gatt.disconnect();
             }
           }
-        
+
           onDisconnected() {
             console.log('Device is disconnected.');
           }
@@ -142,9 +142,9 @@
           //.then(_ => weVibe.disconnect())
           .catch(error => { console.log(error) });
         });
-        
+
         document.querySelector('#btn_read_data').addEventListener('click', function() {
-          
+
 
           weVibe.connect()
           .then(_ => {return weVibe.writeCommand(new Uint8Array([15, 255, 0, 100, 0, 0, 0, 0]))})
@@ -181,7 +181,7 @@
          document.getElementById('info-wrapper').style.display = ""
          document.getElementById('info').innerHTML = "<h3><span>Temperature: " + temp + "&deg;C</span></h3><h3><span>Battery: " + battery + "%</span></h3>";
   }
-    
+
   function changePattern(pattern)  {
     command = null;
   if (pattern == "none")

@@ -153,6 +153,31 @@
 
           //});
         });
+
+  function displayInfo(readInfoResponse) {
+	 var deviceStatus = readInfoResponse;
+
+	 var mode = deviceStatus.getUint8(1) & 0xf;
+	 var temp = Math.round((deviceStatus.getUint8(5)-32)*5/9);
+
+	 var j = (deviceStatus.getUint8(3) << 8) + deviceStatus.getUint8(2) & 0xffff;
+         var i = j;
+         if (j < 0) {
+           i = 0x10000 + j;
+         }
+	 var battery = Math.round((i / 65535) * 100);
+
+	 var model = "unknown";
+	 if (deviceStatus.getUint8(7) == 69) {
+	   model = "We-Vibe 4+";
+	 }
+
+         var extIntensity = deviceStatus.getUint8(6)  >> 4 & 0xf;
+	 var intIntensity = deviceStatus.getUint8(6) & 0xf;
+
+         document.getElementById('info-wrapper').style.display = ""
+         document.getElementById('info').innerHTML = "<h3><span>Temperature: " + temp + "&deg;C</span></h3><h3><span>Battery: " + battery + "%</span></h3>";
+  }
     
   function changePattern(pattern)  {
     command = null;

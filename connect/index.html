@@ -149,13 +149,8 @@
           .then(_ => {weVibe.writeCommand(new Uint8Array([15, 255, 0, 100, 0, 0, 0, 0]))})
           //.then(_ => weVibe.disconnect())
           .catch(error => { console.log(error) });
-          console.log(":P");
-          console.log(weVibe.readInfo());
-          data = weVibe.readInfo();
-          document.getElementById('info-wrapper').style.display = ""
-          document.getElementById('info').innerHTML = data;
-          
-          
+
+
           //});
         });
     

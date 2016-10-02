@@ -58,6 +58,9 @@ h2 {
   margin: auto;
 }
 
+.btn, .btn-large {
+    text-transform: none;
+}
 
 footer.page-footer {
   background: #f2f2f2;

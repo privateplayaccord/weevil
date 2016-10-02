@@ -146,7 +146,6 @@
 
         document.querySelector('#btn_read_data').addEventListener('click', function() {
 
-
           weVibe.connect()
           .then(_ => {return weVibe.writeCommand(new Uint8Array([15, 255, 0, 100, 0, 0, 0, 0]))})
           .then(_ => {return weVibe.readInfo()})
@@ -154,11 +153,10 @@
           //.then(_ => weVibe.disconnect())
           .catch(error => { console.log(error) });
 
-
-          //});
         });
 
-  function displayInfo(readInfoResponse) {
+
+       function displayInfo(readInfoResponse) {
 	 var deviceStatus = readInfoResponse;
 
 	 var mode = deviceStatus.getUint8(1) & 0xf;
@@ -181,23 +179,24 @@
 
          document.getElementById('info-wrapper').style.display = ""
          document.getElementById('info').innerHTML = "<h3><span>Temperature: " + temp + "&deg;C</span></h3><h3><span>Battery: " + battery + "%</span></h3>";
-  }
+       }
 
-  function changePattern(pattern)  {
-    command = null;
-  if (pattern == "none")
-    command = new Uint8Array([15, 0, null, 0, null, null, null, null]);
-   else if (pattern == "chachacha")
-    command = new Uint8Array([15, 9, null, 0, null, null, null, null]); 
-    else if (pattern == "vibrate")
-    command = new Uint8Array([15, 1, null, 0, null, null, null, null]); 
-     else if (pattern == "other")
-    command = new Uint8Array([15, 2, null, 0, null, null, null, null]); 
-     weVibe.connect()
-          .then(_ => {return weVibe.writeCommand(command);})
-          //.then(_ => weVibe.disconnect())
-          .catch(error => { console.log(error) });
-  }
+
+       function changePattern(pattern)  {
+	 command = null;
+	 if (pattern == "none")
+	   command = new Uint8Array([15, 0, null, 0, null, null, null, null]);
+	 else if (pattern == "chachacha")
+	   command = new Uint8Array([15, 9, null, 0, null, null, null, null]); 
+	 else if (pattern == "vibrate")
+	   command = new Uint8Array([15, 1, null, 0, null, null, null, null]); 
+	 else if (pattern == "other")
+	   command = new Uint8Array([15, 2, null, 0, null, null, null, null]); 
+	 weVibe.connect()
+               .then(_ => {return weVibe.writeCommand(command);})
+               //.then(_ => weVibe.disconnect())
+               .catch(error => { console.log(error) });
+       }
 
         </script>
 

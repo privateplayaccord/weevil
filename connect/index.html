@@ -52,10 +52,16 @@
             <div>
               <h2>Select mode</h2>
               <select id="selectBox" class="btn dropdown-toggle pink darken-4" placeholder="Select mode" onchange="changePattern(value);">
-                <option value="none">None</option>
-                <option value="chachacha">Chachacha</option>
-                <option value="vibrate">Vibrate</option>
-                <option value="other">Other</option>
+                <option value="0">None</option>
+                <option value="1">Vibrate1</option>
+                <option value="2">Vibrate2</option>
+                <option value="3">Vibrate3</option>
+                <option value="4">Pulse</option>
+                <option value="5">Rapid Pulse</option>
+                <option value="6">Echo</option>
+                <option value="7">Wave</option>
+                <option value="8">Tide</option>
+                <option value="9">Chachacha</option>
               </select>
             </div>
           </section>
@@ -120,18 +126,9 @@
        }
 
 
-       function changePattern(pattern)  {
-	 command = null;
-	 if (pattern == "none")
-	   command = new Uint8Array([15, 0, null, 0, null, null, null, null]);
-	 else if (pattern == "chachacha")
-	   command = new Uint8Array([15, 9, null, 0, null, null, null, null]);
-	 else if (pattern == "vibrate")
-	   command = new Uint8Array([15, 1, null, 0, null, null, null, null]);
-	 else if (pattern == "other")
-	   command = new Uint8Array([15, 2, null, 0, null, null, null, null]);
+       function changePattern(command)  {
 	 weVibe.connect()
-               .then(_ => {return weVibe.writeCommand(command);})
+               .then(_ => {return weVibe.writeCommand(new Uint8Array([15, command, null, 0, null, null, null, null]));})
                //.then(_ => weVibe.disconnect())
                .catch(error => { console.log(error) });
        }

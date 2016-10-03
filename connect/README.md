@@ -27,6 +27,11 @@ more recent versions of Chrome to use Web Bluetooth as it has an
 Otherwise, you will need to configure your browser to enable Web
 Bluetooth via: `chrome://flags/#enable-web-bluetooth`
 
+Depending on your Android version you will also need to enable
+Bluetooth and Location services (Location is required in recent
+versions to support Bluetooth LE--which is stupid but we don't make
+the rules).
+
 ## Connecting
 
  1. Press "Pair Device" and choose your device from the list.
